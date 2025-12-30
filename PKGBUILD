@@ -2,7 +2,7 @@
 # PKGBUILD for docker-iptables-guard
 
 pkgname=docker-iptables-guard
-pkgver=0.1.0
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Reassert hotspot iptables invariants after Docker networking events"
 arch=('x86_64')
@@ -31,4 +31,3 @@ package() {
 
   install -Dm644 "${srcdir}/docker-iptables-guard.service.installed" "${pkgdir}/usr/lib/systemd/system/docker-iptables-guard.service"
 }
-
