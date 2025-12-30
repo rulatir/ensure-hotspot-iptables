@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+post_install() {
+  # reload systemd units so the new unit is visible
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl daemon-reload || true
+  fi
+
+  cat <<'EOF'
+Package docker-iptables-guard was installed.
+To enable the service now, run:
+  sudo systemctl enable --now docker-iptables-guard.service
+
+If you prefer to enable it only at boot without starting immediately:
+  sudo systemctl enable docker-iptables-guard.service
+
+If you don't want the service enabled, no further action is required.
+EOF
+}
+
+post_upgrade() {
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl daemon-reload || true
+  fi
+  post_install
+}
+
+pre_remove() {
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl daemon-reload || true
+  fi
+}
+

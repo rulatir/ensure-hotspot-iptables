@@ -1,0 +1,4 @@
+/.idea
+/pkg
+/src
+docker-iptables-guard-*.tar.zst
